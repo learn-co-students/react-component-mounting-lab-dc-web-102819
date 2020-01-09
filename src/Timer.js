@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 
 class Timer extends Component {
-  state = {
+
+ state = {
     time: 0,
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
 
+  interval = {
+    int: setInterval(() => this.clockTick(), 1000)
+  }
   // add your code here
 
   render() {
     const { time, color } = this.state;
     return (
+      
       <section className="Timer" style={{ background: color }}>
         <h1>{time}</h1>
         <button onClick={this.stopClock}>Stop</button>
@@ -20,15 +25,24 @@ class Timer extends Component {
     );
   }
 
+ 
+  componentDidMount(){
+    this.interval.int
+  }
+
+  componentWillUnmount(){
+    this.stopClock()
+  }
   //clock functions
   clockTick = () => {
+    
     this.setState(prevState => ({
       time: prevState.time + 1
     }));
   };
 
   stopClock = () => {
-    clearInterval(this.interval);
+    clearInterval(this.interval.int);
   };
 
   // for the 'x' button,

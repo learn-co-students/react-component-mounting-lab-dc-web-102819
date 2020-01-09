@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Timer from './Timer'
 
 class App extends Component {
-
+  
   //no props being used here, so we can use the shorthand declaration of state
   state = {
     timerIDs: []
@@ -11,7 +11,7 @@ class App extends Component {
 
 
   //Your code here:
-
+  
 
 
 
@@ -30,6 +30,7 @@ class App extends Component {
         <button onClick={this.handleAddTimer}>Add New Timer</button>
 
         <div className="TimerGrid">
+       
           {this.renderTimers()}
         </div>
 
@@ -40,7 +41,8 @@ class App extends Component {
   // returns array of components written in JSX, mapped from this.state.timerIDs
   renderTimers = () => this.state.timerIDs.map(id => {
     return <Timer key={id} id={id} removeTimer={this.removeTimer} />
-  })
+    })
+  
 
   // adds a random number for timer ID
   handleAddTimer = () => {
